@@ -1,0 +1,135 @@
+<robot name="robot">
+
+  <link name="base_link">
+   <visual>
+     <origin xyz="0 0 0" rpy="0 0 0" />
+     <geometry>
+       <box size="0.2 0.2 0.1" />
+     </geometry>
+     <material name="red">
+       <color rgba="1.0 0 0 1.0"/>
+     </material>
+   </visual>
+  </link>
+
+  <link name="L1">
+   <visual>
+     <origin xyz="0 0 0" rpy="0 0 0" />
+     <geometry>
+       <cylinder radius="0.08" length="0.1"/>
+     </geometry>
+     <material name="red">
+       <color rgba="1.0 0 0 1.0"/>
+     </material>
+   </visual>
+  </link>
+
+  <link name="L2">
+   <visual>
+     <origin xyz="0 0 0.2" rpy="0 0 0" />
+     <geometry>
+       <box size="0.1 0.1 0.4" />
+     </geometry>
+     <material name="red">
+       <color rgba="1.0 0 0 1.0"/>
+     </material>
+   </visual>
+  </link>
+  
+  <link name="L3">
+   <visual>
+     <origin xyz="0.15 0 0" rpy="0 0 0" />
+     <geometry>
+       <box size="0.4 0.1 0.1" />
+     </geometry>
+     <material name="red">
+       <color rgba="1.0 0 0 1.0"/>
+     </material>
+   </visual>
+  </link>
+
+  <link name="L4">
+   <visual>
+     <origin xyz="0 0 0" rpy="0 1.57 0" />
+     <geometry>
+       <cylinder radius="0.05" length="0.1"/>
+     </geometry>
+     <material name="red">
+       <color rgba="1.0 0 0 1.0"/>
+     </material>
+   </visual>
+  </link>
+
+  <link name="L5">
+   <visual>
+     <origin xyz="0.05 0 0" rpy="0 0 0" />
+     <geometry>
+       <box size="0.1 0.05 0.05" />
+     </geometry>
+     <material name="red">
+       <color rgba="1.0 0 0 1.0"/>
+     </material>
+   </visual>
+  </link>
+
+  <link name="L6">
+   <visual>
+     <origin xyz="0.05 0 0" rpy="0 0 0" />
+     <geometry>
+       <box size="0.1 0.03 0.03" />
+     </geometry>
+     <material name="red">
+       <color rgba="1.0 0 0 1.0"/>
+     </material>
+   </visual>
+  </link>
+
+  <joint name="J1" type="revolute">
+    <origin xyz="0 0 0.1" rpy="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="L1"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="20" velocity="1" lower="-3" upper="3" />
+  </joint>
+  
+  <joint name="J2" type="revolute">
+    <origin xyz="0 0 0.05" rpy="0 0 0"/>
+    <parent link="L1"/>
+    <child link="L2"/>
+    <axis xyz="1 0 0"/>
+    <limit effort="20" velocity="1" lower="-1.5" upper="1.5" />
+  </joint>
+
+  <joint name="J3" type="revolute">
+    <origin xyz="0 0 0.45" rpy="0 0 0"/>
+    <parent link="L2"/>
+    <child link="L3"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="20" velocity="1" lower="-3" upper="3" />
+  </joint>
+
+  <joint name="J4" type="revolute">
+    <origin xyz="0.4 0 0" rpy="0 0 0"/>
+    <parent link="L3"/>
+    <child link="L4"/>
+    <axis xyz="1 0 0"/>
+    <limit effort="20" velocity="1" lower="-3" upper="3" />
+  </joint>
+
+  <joint name="J5" type="revolute">
+    <origin xyz="0.05 0 0" rpy="0 0 0"/>
+    <parent link="L4"/>
+    <child link="L5"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="20" velocity="1" lower="-1.5" upper="1.5" />
+  </joint>
+  
+  <joint name="J6" type="revolute">
+    <origin xyz="0.1 0 0" rpy="0 0 0"/>
+    <parent link="L5"/>
+    <child link="L6"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="20" velocity="1" lower="-1.5" upper="1.5" />
+  </joint>
+  
+</robot>
