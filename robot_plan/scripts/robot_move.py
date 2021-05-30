@@ -212,10 +212,13 @@ class MoveGroupPythonInterfaceTutorial(object):
     ## We can plan a motion for this group to a desired pose for the
     ## end-effector:
     pose_goal = geometry_msgs.msg.Pose()
-    pose_goal.orientation.w = 0.0
-    pose_goal.position.x = 0.1
-    pose_goal.position.y = 0.1
-    pose_goal.position.z = 0.1
+    pose_goal.orientation.x = -0.177007
+    pose_goal.orientation.y = 0.1181
+    pose_goal.orientation.z = -0.2624
+    pose_goal.orientation.w = 0.9546
+    pose_goal.position.x = -0.015057
+    pose_goal.position.y = -0.29864
+    pose_goal.position.z = 0.71177
 
     move_group.set_pose_target(pose_goal)
 
@@ -476,10 +479,10 @@ def main():
 
     input("============ Press `Enter` to execute a movement using a joint state goal ...")
     tutorial.go_to_joint_state()
-    '''
+
     input("============ Press `Enter` to execute a movement using a pose goal ...")
     tutorial.go_to_pose_goal()
-
+    '''
     input("============ Press `Enter` to plan and display a Cartesian path ...")
     cartesian_plan, fraction = tutorial.plan_cartesian_path()
 
