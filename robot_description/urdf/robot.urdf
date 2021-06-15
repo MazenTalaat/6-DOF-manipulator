@@ -1,5 +1,7 @@
 <robot name="robot">
 
+  <link name="world"/>
+  
   <link name="base_link">
    <visual>
      <origin xyz="0 0 0" rpy="0 0 0" />
@@ -16,6 +18,10 @@
        <box size="0.2 0.2 0.1" />
      </geometry>
    </collision>
+   <inertial>
+     <mass value="1"/>
+     <inertia ixx="0" ixy="0.0" ixz="0.0" iyy="0" iyz="0.0" izz="0"/>
+   </inertial>
   </link>
 
   <link name="L1">
@@ -34,6 +40,10 @@
        <cylinder radius="0.08" length="0.1"/>
      </geometry>
    </collision>
+   <inertial>
+     <mass value="1"/>
+     <inertia ixx="0" ixy="0.0" ixz="0.0" iyy="0" iyz="0.0" izz="0"/>
+   </inertial>
   </link>
 
   <link name="L2">
@@ -52,6 +62,10 @@
        <box size="0.1 0.1 0.4" />
      </geometry>
    </collision>
+   <inertial>
+     <mass value="1"/>
+     <inertia ixx="0" ixy="0.0" ixz="0.0" iyy="0" iyz="0.0" izz="0"/>
+   </inertial>
   </link>
   
   <link name="L3">
@@ -70,6 +84,10 @@
        <box size="0.4 0.1 0.1" />
      </geometry>
    </collision>
+   <inertial>
+     <mass value="1"/>
+     <inertia ixx="0" ixy="0.0" ixz="0.0" iyy="0" iyz="0.0" izz="0"/>
+   </inertial>
   </link>
 
   <link name="L4">
@@ -88,6 +106,10 @@
        <cylinder radius="0.05" length="0.1"/>
      </geometry>
    </collision>
+   <inertial>
+     <mass value="1"/>
+     <inertia ixx="0" ixy="0.0" ixz="0.0" iyy="0" iyz="0.0" izz="0"/>
+   </inertial>
   </link>
 
   <link name="L5">
@@ -106,6 +128,10 @@
        <box size="0.1 0.05 0.05" />
      </geometry>
    </collision>
+   <inertial>
+     <mass value="1"/>
+     <inertia ixx="0" ixy="0.0" ixz="0.0" iyy="0" iyz="0.0" izz="0"/>
+   </inertial>
   </link>
 
   <link name="L6">
@@ -124,8 +150,18 @@
        <box size="0.1 0.03 0.03"/>
      </geometry>
    </collision>
+   <inertial>
+     <mass value="1"/>
+     <inertia ixx="0" ixy="0.0" ixz="0.0" iyy="0" iyz="0.0" izz="0"/>
+   </inertial>
   </link>
-
+  
+  <joint name="virtual_joint" type="fixed">
+    <parent link="world" />
+    <child link = "base_link" />
+    <origin xyz="0.0 0.0 0.1" rpy="0.0 0.0 0.0" />
+  </joint>
+  
   <joint name="J1" type="revolute">
     <origin xyz="0 0 0.1" rpy="0 0 0"/>
     <parent link="base_link"/>
@@ -173,5 +209,78 @@
     <axis xyz="0 0 1"/>
     <limit effort="20" velocity="1" lower="-1.5" upper="1.5" />
   </joint>
+  
+  <transmission name="trans1">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="J1">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="M1">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+ </transmission>
+ 
+ <transmission name="trans2">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="J2">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="M2">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+ </transmission>
+ 
+ <transmission name="trans3">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="J3">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="M3">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+ </transmission>
+ 
+ <transmission name="trans4">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="J4">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="M4">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+ </transmission>
+ 
+ <transmission name="trans5">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="J5">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="M5">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+ </transmission>
+ 
+ <transmission name="trans6">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="J6">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="M6">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+ </transmission>
+ 
+<gazebo>
+  <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>/asu_controller</robotNamespace>
+    <legacyModeNS>true</legacyModeNS>
+  </plugin>
+</gazebo>
   
 </robot>
